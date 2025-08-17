@@ -36,11 +36,18 @@
       background-size: 400% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glowPulse 3s infinite alternate, shine 12s linear infinite;
       text-shadow: 
         0 0 15px #b366ff,
         0 0 30px #9933ff,
         0 0 60px #6600cc;
+      opacity: 0;
+      transform: scale(0.8) translateY(40px);
+      animation: fadeZoomIn 2.5s ease forwards 2.5s, glowPulse 3s infinite alternate 2.5s, shine 12s linear infinite 2.5s;
+    }
+
+    @keyframes fadeZoomIn {
+      from { opacity: 0; transform: scale(0.8) translateY(40px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     @keyframes glowPulse {
@@ -52,9 +59,85 @@
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
+
+    /* Splash Screen */
+    .splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0d001a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    .splash.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .splash h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 40px;
+      color: #b366ff;
+      text-shadow: 0 0 15px #9933ff, 0 0 30px #6600cc;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    /* Go Button */
+    .skip-center, .skip-corner {
+      font-family: 'Orbitron', sans-serif;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 18px;
+      background: linear-gradient(90deg, #6600cc, #b366ff, #ff66cc);
+      color: white;
+      box-shadow: 0 0 20px #b366ff, 0 0 40px #9933ff;
+      transition: transform 0.2s;
+    }
+
+    .skip-center:hover, .skip-corner:hover {
+      transform: scale(1.1);
+    }
+
+    .skip-corner {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 14px;
+      padding: 8px 16px;
+    }
   </style>
 </head>
 <body>
+  <div class="splash" id="splash">
+    <h1>Loading Arab Hosting...</h1>
+    <button class="skip-center" onclick="hideSplash()">Go Arab Hosting</button>
+    <button class="skip-corner" onclick="hideSplash()">Go Arab Hosting</button>
+  </div>
   <div class="logo">Arab Hosting</div>
+
+  <script>
+    function hideSplash() {
+      document.getElementById('splash').classList.add('fade-out');
+      setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+      }, 1000);
+    }
+
+    // Auto fade after 4s
+    setTimeout(() => {
+      hideSplash();
+    }, 4000);
+  </script>
 </body>
 </html>
