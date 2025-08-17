@@ -1,388 +1,315 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Arab Hosting — باقات الاستضافة</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg1:#140028; --bg2:#2d005a; --bg3:#4b0082; --bg4:#6600cc; --bg5:#9900ff;
-  --card:#0f0220; --stroke:#3a0b6b; --text:#efe6ff; --muted:#cbb6ff;
-  --accent:#b366ff; --accent2:#7ad0ff; --accent3:#ff66cc;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0; color:var(--text); font-family:'Cairo',system-ui;
-  background: radial-gradient(1200px 1200px at 20% -10%, #24004b99, transparent),
-              radial-gradient(900px 900px at 120% 10%, #4b008288, transparent),
-              linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4),var(--bg5));
-  background-size:400% 400%; animation:aurora 18s ease infinite;
-  overflow-x:hidden;
-}
-@keyframes aurora{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Arab Hosting</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a001f, #3d0066);
+      color: white;
+      text-align: center;
+    }
 
-/* Floating stars canvas */
-#stars{position:fixed; inset:0; z-index:-1}
+    header {
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.4);
+    }
 
-/* Splash */
-.splash{
-  position:fixed; inset:0; z-index:9999; background:#0d001a;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-  transition:opacity 1s ease;
-}
-.splash.fade-out{opacity:0; visibility:hidden}
-.splash h1{
-  font-family:'Orbitron',sans-serif; font-size:34px;
-  text-shadow:0 0 15px #9933ff, 0 0 30px #6600cc; animation:glowPulse 2s infinite alternate;
-}
-.go, .go-corner{
-  font-family:'Orbitron',sans-serif; padding:10px 20px; border:none; border-radius:25px;
-  cursor:pointer; font-size:16px; color:#fff;
-  background:linear-gradient(90deg,#6600cc,#b366ff,#ff66cc);
-  box-shadow:0 0 20px #b366ff,0 0 40px #9933ff; transition:transform .2s;
-}
-.go:hover,.go-corner:hover{transform:scale(1.06)}
-.go-corner{position:absolute; bottom:20px; right:20px; font-size:14px; padding:8px 16px}
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
 
-/* Top nav */
-header.nav{
-  position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
-  background:rgba(10,0,24,.45); border-bottom:1px solid var(--stroke);
-}
-.nav .wrap{max-width:1200px;margin:auto;display:flex;align-items:center;gap:16px;padding:12px 20px}
-.brand{
-  font-family:'Orbitron',sans-serif; font-size:22px; letter-spacing:1px;
-  background:linear-gradient(90deg,#330066,#b366ff,#ffffff,#b366ff,#330066);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  text-shadow:0 0 12px #b366ff,0 0 24px #9933ff;
-}
-nav.links{margin-inline-start:auto; display:flex; gap:10px; flex-wrap:wrap}
-nav.links a{
-  color:var(--text); text-decoration:none; padding:8px 14px; border:1px solid var(--stroke);
-  border-radius:999px; font-weight:600; font-size:14px; transition:.2s;
-  background:rgba(30,0,60,.35);
-}
-nav.links a:hover{transform:translateY(-2px); box-shadow:0 0 18px #b366ff77}
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
 
-/* Hero */
-.hero{min-height:44vh; display:grid; place-items:center; text-align:center; padding:40px 16px}
-.logo{
-  font-family:'Orbitron',sans-serif; font-size:64px; font-weight:800; letter-spacing:3px;
-  background:linear-gradient(90deg,#330066,#b366ff,#ffffff,#b366ff,#330066);
-  background-size:400% 100%;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  animation:shine 12s linear infinite, glowPulse 3s infinite alternate;
-  text-shadow:0 0 15px #b366ff,0 0 30px #9933ff,0 0 60px #6600cc;
-  opacity:0; transform:scale(.9) translateY(20px);
-  animation:fadeZoomIn 1.4s ease forwards .6s, glowPulse 3s infinite alternate .6s, shine 12s linear infinite .6s;
-}
-.hero p{color:var(--muted); margin-top:12px}
+    .card:hover {
+      transform: translateY(-8px);
+    }
 
-/* Sections */
-.section{max-width:1200px; margin:24px auto 64px; padding:0 16px}
-.section h2{margin:0 0 14px; font-size:28px; display:flex; align-items:center; gap:10px}
-.section h2 .dot{
-  width:10px;height:10px;border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));
-  box-shadow:0 0 14px var(--accent);
-}
-.section .head{
-  display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px
-}
-.btn-sm{
-  border:1px solid var(--stroke); background:rgba(40,0,80,.35); color:var(--text);
-  border-radius:12px; padding:8px 12px; cursor:pointer; font-weight:700
-}
-.grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{
-  background:linear-gradient(180deg, rgba(14,0,30,.7), rgba(14,0,30,.35));
-  border:1px solid var(--stroke); border-radius:18px; padding:18px; position:relative; overflow:hidden;
-  transform:translateY(16px); opacity:0; transition:.6s ease;
-}
-.card::before{
-  content:""; position:absolute; inset:-2px; border-radius:20px; padding:1px;
-  background:linear-gradient(120deg,#5311a8,transparent,#7ad0ff,transparent,#ff66cc);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.22;
-}
-.card.show{transform:translateY(0); opacity:1}
-.card:hover{box-shadow:0 0 30px #b366ff44}
-.card h3{margin:0 0 6px; font-size:18px}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.tag{border:1px solid var(--stroke); border-radius:999px; padding:6px 10px; font-size:12px; background:rgba(40,0,80,.35)}
-.price{margin-top:8px; font-weight:800}
-.price .usd{opacity:.85; font-weight:600; font-size:14px}
-.cta{margin-top:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-.btn{
-  border:none; cursor:pointer; border-radius:12px; padding:10px 14px; font-weight:700; font-size:14px; color:#fff;
-  background:linear-gradient(90deg,#6600cc,#b366ff,#ff66cc); box-shadow:0 0 18px #b366ff66;
-  animation:pulse 2.4s infinite ease-in-out;
-}
-.btn.outline{background:transparent; border:1px solid var(--stroke); color:var(--text)}
-.small{font-size:12px; opacity:.8}
-hr.sep{border:none;height:1px;background:linear-gradient(90deg,transparent,#3a0b6b,transparent); margin:26px 0}
+    .card h2 {
+      margin-top: 0;
+      color: #bb86fc;
+    }
 
-.icon{font-size:20px; margin-inline-start:6px; opacity:.9}
+    .card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
 
-/* Modal compare */
-.modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.5); z-index:60}
-.modal.open{display:grid}
-.modal .box{
-  width:min(100%, 920px); background:rgba(15,2,32,.95); border:1px solid var(--stroke);
-  border-radius:18px; padding:16px;
-}
-.table{overflow:auto; border:1px solid var(--stroke); border-radius:12px}
-.table table{width:100%; border-collapse:collapse; min-width:700px}
-.table th,.table td{padding:10px 12px; border-bottom:1px solid #2c0a52; text-align:center}
-.table th{background:rgba(40,0,80,.35); position:sticky; top:0}
-.close{float:left; border:none; background:transparent; color:#fff; font-size:18px; cursor:pointer}
+    .card ul li {
+      margin: 6px 0;
+    }
 
-/* Animations */
-@keyframes fadeZoomIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes glowPulse{0%{text-shadow:0 0 10px #b366ff,0 0 20px #9933ff,0 0 40px #6600cc}100%{text-shadow:0 0 20px #d699ff,0 0 40px #b366ff,0 0 80px #9933ff}}
-@keyframes shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@keyframes pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
 
-.footer{max-width:1200px;margin:30px auto 50px;padding:0 16px;opacity:.85;font-size:14px}
-.footer a{color:#a7f0ff;text-decoration:none}
-</style>
+    .btn:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+  </style>
 </head>
 <body>
 
-<canvas id="stars"></canvas>
+  <header>Go Arab Hosting</header>
 
-<!-- Splash -->
-<div class="splash" id="splash">
-  <h1>Loading Arab Hosting...</h1>
-  <button class="go" onclick="hideSplash()">Go Arab Hosting</button>
-  <button class="go-corner" onclick="hideSplash()">Go Arab Hosting</button>
-</div>
+  <section class="plans">
 
-<!-- Top Nav -->
-<header class="nav">
-  <div class="wrap">
-    <div class="brand">Arab Hosting</div>
-    <nav class="links">
-      <a href="#samp">🎮 SA-MP</a>
-      <a href="#mta">🎛️ MTA</a>
-      <a href="#mc">🧱 Minecraft</a>
-      <a href="#discord">🤖 Discord Bots</a>
-      <a href="https://discord.gg/y8zcEvZu3J" target="_blank" rel="noopener">الدعم عبر ديسكورد</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero -->
-<section class="hero">
-  <div>
-    <div class="logo">Arab Hosting</div>
-    <p>استضافة ألعاب احترافية بحماية DDoS وشبكة نيون من المستقبل ⚡</p>
-  </div>
-</section>
-
-<hr class="sep"/>
-
-<!-- SA-MP -->
-<section class="section" id="samp">
-  <div class="head">
-    <h2><span class="dot"></span> باقات SA-MP <span class="icon">🎮</span></h2>
-    <button class="btn-sm" data-compare="samp">قارن الخطط</button>
-  </div>
-  <div class="grid">
-    <div class="card obs"><h3>Plan 1 — 50 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 312MB</span><span class="tag">CPU: 25%</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">30k Credit ProBot</div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a><span class="small">لوحة تحكم بسيطة</span></div>
+    <!-- SA-MP Plans -->
+    <div class="card">
+      <h2>SA-MP Plan 1</h2>
+      <ul>
+        <li>50 Slots</li>
+        <li>RAM: 312MB</li>
+        <li>CPU: 25%</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>30k Credit ProBot</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card obs"><h3>Plan 2 — 150 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 512MB</span><span class="tag">CPU: 35%</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">80k Credit ProBot</div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>SA-MP Plan 2</h2>
+      <ul>
+        <li>150 Slots</li>
+        <li>RAM: 512MB</li>
+        <li>CPU: 35%</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>80k Credit ProBot</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card obs"><h3>Plan 3 — 350 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 1GB</span><span class="tag">CPU: 40%</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">150k Credit ProBot <span class="usd">| $2.5</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>SA-MP Plan 3</h2>
+      <ul>
+        <li>350 Slots</li>
+        <li>RAM: 1GB</li>
+        <li>CPU: 40%</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>150k Credit ProBot | $2.5</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card obs"><h3>Plan 4 — 500 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 3GB</span><span class="tag">CPU: 50%</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">200k Credit ProBot <span class="usd">| $3.5</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>SA-MP Plan 4</h2>
+      <ul>
+        <li>500 Slots</li>
+        <li>RAM: 3GB</li>
+        <li>CPU: 50%</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>200k Credit ProBot | $3.5</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card obs"><h3>Plan 5 — 750 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 4GB</span><span class="tag">CPU: 70%</span><span class="tag">Storage: 4× SSD</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">260k Credit ProBot <span class="usd">| $4</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>SA-MP Plan 5</h2>
+      <ul>
+        <li>750 Slots</li>
+        <li>RAM: 4GB</li>
+        <li>CPU: 70%</li>
+        <li>Storage: 4 SSD</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>260k Credit ProBot | $4</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
 
-    <div class="card obs"><h3>Plan 6 — 1000 Slots</h3>
-      <div class="meta"><span class="tag">RAM: 6GB</span><span class="tag">CPU: 100%</span><span class="tag">Storage: 6× SSD</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">400k Credit ProBot <span class="usd">| $5</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>SA-MP Plan 6</h2>
+      <ul>
+        <li>1000 Slots</li>
+        <li>RAM: 6GB</li>
+        <li>CPU: 100%</li>
+        <li>Storage: 6 SSD</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>400k Credit ProBot | $5</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-  </div>
-</section>
 
-<hr class="sep"/>
+    <!-- MTA Plans -->
+    <div class="card">
+      <h2>MTA Plan 1</h2>
+      <ul>
+        <li>300 Players</li>
+        <li>CPU: 34%</li>
+        <li>RAM: 2GB</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS</li>
+        <li>125k Credit | $1.5</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
+    </div>
 
-<!-- MTA -->
-<section class="section" id="mta">
-  <div class="head">
-    <h2><span class="dot"></span> باقات MTA <span class="icon">🎛️</span></h2>
-    <button class="btn-sm" data-compare="mta">قارن الخطط</button>
-  </div>
-  <div class="grid">
-    <div class="card obs"><h3>Plan 1 — 300 Players</h3>
-      <div class="meta"><span class="tag">CPU: 34%</span><span class="tag">RAM: 2GB</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS</span></div>
-      <div class="price">125k Credit <span class="usd">| $1.5</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>MTA Plan 2</h2>
+      <ul>
+        <li>500 Players</li>
+        <li>CPU: 50%</li>
+        <li>RAM: 4.4GB</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS</li>
+        <li>300k Credit | $3</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Plan 2 — 500 Players</h3>
-      <div class="meta"><span class="tag">CPU: 50%</span><span class="tag">RAM: 4.4GB</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS</span></div>
-      <div class="price">300k Credit <span class="usd">| $3</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
-    </div>
-    <div class="card obs"><h3>Plan 3 — 1000 Players</h3>
-      <div class="meta"><span class="tag">CPU: 100%</span><span class="tag">RAM: 8.6GB</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS</span></div>
-      <div class="price">550k Credit <span class="usd">| $5</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
-    </div>
-  </div>
-</section>
 
-<hr class="sep"/>
-
-<!-- Minecraft -->
-<section class="section" id="mc">
-  <div class="head">
-    <h2><span class="dot"></span> باقات Minecraft Host <span class="icon">🧱</span></h2>
-    <button class="btn-sm" data-compare="mc">قارن الخطط</button>
-  </div>
-  <div class="grid">
-    <div class="card obs"><h3>Plan 1 — 50 Slots</h3>
-      <div class="meta"><span class="tag">CPU: 100%</span><span class="tag">RAM: 2GB</span><span class="tag">Storage: 1× SSD</span><span class="tag">Network: 1Gb/s</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">75k Credit <span class="usd">| $4</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
+    <div class="card">
+      <h2>MTA Plan 3</h2>
+      <ul>
+        <li>1000 Players</li>
+        <li>CPU: 100%</li>
+        <li>RAM: 8.6GB</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS</li>
+        <li>550k Credit | $5</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Plan 2 — 100 Slots</h3>
-      <div class="meta"><span class="tag">CPU: 150%</span><span class="tag">RAM: 4GB</span><span class="tag">Storage: 2× SSD</span><span class="tag">Network: 1Gb/s</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">90k Credit <span class="usd">| $6</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
-    </div>
-    <div class="card obs"><h3>Plan 3 — 175 Slots</h3>
-      <div class="meta"><span class="tag">CPU: 200%</span><span class="tag">RAM: 6GB</span><span class="tag">Storage: 3× SSD</span><span class="tag">Network: 1Gb/s</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">120k Credit <span class="usd">| $7</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
-    </div>
-    <div class="card obs"><h3>Plan 4 — 250 Slots</h3>
-      <div class="meta"><span class="tag">CPU: 300%</span><span class="tag">RAM: 8GB</span><span class="tag">Storage: 4× SSD</span><span class="tag">Network: 1Gb/s Uplink</span><span class="tag">MySQL: x1 DB</span><span class="tag">Anti-DDoS: 1 Tbps</span></div>
-      <div class="price">180k Credit <span class="usd">| $10</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اشترك الآن</a></div>
-    </div>
-  </div>
-</section>
 
-<hr class="sep"/>
-
-<!-- Discord Bot Hosting -->
-<section class="section" id="discord">
-  <div class="head">
-    <h2><span class="dot"></span> باقات Bot Discord Hosting <span class="icon">🤖</span></h2>
-    <button class="btn-sm" data-compare="discord">قارن الخطط</button>
-  </div>
-  <div class="grid">
-    <div class="card obs"><h3>Starter</h3>
-      <div class="meta"><span class="tag">RAM: 256MB</span><span class="tag">CPU: 10%</span><span class="tag">Storage: 100MB</span></div>
-      <div class="meta"><span class="tag">Basic Support</span><span class="tag">Simple Panel</span><span class="tag">Limited Stats</span></div>
-      <div class="price">60k Credit <span class="usd">| $1</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اطلب الآن</a></div>
+    <!-- Minecraft Plans -->
+    <div class="card">
+      <h2>Minecraft Plan 1</h2>
+      <ul>
+        <li>50 Slots</li>
+        <li>CPU: 100%</li>
+        <li>RAM: 2GB</li>
+        <li>Storage: 1 SSD</li>
+        <li>Network: 1GB/s</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>75k Credit | $4</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Basic</h3>
-      <div class="meta"><span class="tag">RAM: 512MB</span><span class="tag">CPU: 25%</span><span class="tag">Storage: 1GB</span></div>
-      <div class="meta"><span class="tag">Tickets Support</span><span class="tag">Advanced Panel</span><span class="tag">Full Stats</span></div>
-      <div class="price">100k Credit <span class="usd">| $2</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اطلب الآن</a></div>
+
+    <div class="card">
+      <h2>Minecraft Plan 2</h2>
+      <ul>
+        <li>100 Slots</li>
+        <li>CPU: 150%</li>
+        <li>RAM: 4GB</li>
+        <li>Storage: 2 SSD</li>
+        <li>Network: 1GB/s</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>90k Credit | $6</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Pro</h3>
-      <div class="meta"><span class="tag">RAM: 1GB</span><span class="tag">CPU: 50%</span><span class="tag">Storage: 5GB</span></div>
-      <div class="meta"><span class="tag">24/7 Support</span><span class="tag">Weekly Backups</span><span class="tag">API Integration</span></div>
-      <div class="price">160k Credit <span class="usd">| $3</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اطلب الآن</a></div>
+
+    <div class="card">
+      <h2>Minecraft Plan 3</h2>
+      <ul>
+        <li>175 Slots</li>
+        <li>CPU: 200%</li>
+        <li>RAM: 6GB</li>
+        <li>Storage: 3 SSD</li>
+        <li>Network: 1GB/s</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>120k Credit | $7</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Premium</h3>
-      <div class="meta"><span class="tag">RAM: 2GB</span><span class="tag">CPU: 100%</span><span class="tag">Storage: 20GB</span></div>
-      <div class="meta"><span class="tag">Dedicated Support</span><span class="tag">Daily Backups</span><span class="tag">DDOS Protection</span></div>
-      <div class="price">200k Credit <span class="usd">| $4</span></div>
-      <div class="cta"><a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">اطلب الآن</a></div>
+
+    <div class="card">
+      <h2>Minecraft Plan 4</h2>
+      <ul>
+        <li>250 Slots</li>
+        <li>CPU: 300%</li>
+        <li>RAM: 8GB</li>
+        <li>Storage: 4 SSD</li>
+        <li>Network: 1GB/s</li>
+        <li>MySQL: 1 DB</li>
+        <li>Anti DDoS: 1 Tbps</li>
+        <li>180k Credit | $10</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-    <div class="card obs"><h3>Custom Plan</h3>
-      <div class="meta"><span class="tag">RAM: اختَر</span><span class="tag">CPU: اختَر</span><span class="tag">Storage: اختَر</span></div>
-      <div class="price">اطلب مواصفاتك الخاصة</div>
-      <div class="cta"><a class="btn outline" href="https://discord.gg/y8zcEvZu3J" target="_blank">تواصل لتخصيص الباقة</a></div>
+
+    <!-- Discord Bot Hosting -->
+    <div class="card">
+      <h2>Discord Bot Starter</h2>
+      <ul>
+        <li>RAM: 256MB</li>
+        <li>CPU: 10%</li>
+        <li>Storage: 100MB</li>
+        <li>Basic Support</li>
+        <li>60k Credit | $1</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
     </div>
-  </div>
-</section>
 
-<!-- Footer -->
-<div class="footer">
-  © 2030 Arab Hosting — جميع الحقوق محفوظة •
-  <a href="https://discord.gg/y8zcEvZu3J" target="_blank">الدعم الفني عبر ديسكورد</a>
-</div>
+    <div class="card">
+      <h2>Discord Bot Basic</h2>
+      <ul>
+        <li>RAM: 512MB</li>
+        <li>CPU: 25%</li>
+        <li>Storage: 1GB</li>
+        <li>Advanced Control Panel</li>
+        <li>100k Credit | $2</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
+    </div>
 
-<!-- Compare Modal -->
-<div class="modal" id="modal">
-  <div class="box">
-    <button class="close" id="closeModal">✖</button>
-    <h3 style="margin:6px 0 12px">مقارنة سريعة</h3>
-    <div class="table" id="tableWrap"></div>
-  </div>
-</div>
+    <div class="card">
+      <h2>Discord Bot Pro</h2>
+      <ul>
+        <li>RAM: 1GB</li>
+        <li>CPU: 50%</li>
+        <li>Storage: 5GB</li>
+        <li>Weekly Backups</li>
+        <li>160k Credit | $3</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
+    </div>
 
-<script>
-/* Splash control */
-function hideSplash(){
-  const sp=document.getElementById('splash');
-  sp.classList.add('fade-out');
-  setTimeout(()=> sp.style.display='none', 900);
-}
-setTimeout(hideSplash, 3500);
+    <div class="card">
+      <h2>Discord Bot Premium</h2>
+      <ul>
+        <li>RAM: 2GB</li>
+        <li>CPU: 100%</li>
+        <li>Storage: 20GB</li>
+        <li>Dedicated Support</li>
+        <li>200k Credit | $4</li>
+      </ul>
+      <a class="btn" href="https://discord.gg/y8zcEvZu3J" target="_blank">Buy Now</a>
+    </div>
 
-/* Stars background */
-(function(){
-  const c=document.getElementById('stars'), ctx=c.getContext('2d');
-  let w,h,stars=[];
-  function resize(){ w=c.width=innerWidth; h=c.height=innerHeight; stars=new Array(110).fill().map(()=>({
-    x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.6+0.3, s:Math.random()*0.6+0.2
-  }));}
-  function tick(){
-    ctx.clearRect(0,0,w,h);
-    for(const st of stars){
-      ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,.8)'; ctx.fill();
-      st.y += st.s; if(st.y>h){st.y=-2; st.x=Math.random()*w;}
-    }
-    requestAnimationFrame(tick);
-  }
-  addEventListener('resize', resize); resize(); tick();
-})();
+  </section>
 
-/* Reveal on scroll */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
-},{threshold:.18});
-document.querySelectorAll('.card.obs').forEach(el=>io.observe(el));
-
-/* Compare tables */
-const datasets={
-  samp:[
-    {plan:'P1', slots:'50',  ram:'312MB', cpu:'25%',  storage:'—',    mysql:'x1', ddos:'1 Tbps', price:'30k | —'},
-    {plan:'P2', slots:'150', ram:'512MB', cpu:'35%',  storage:'—',    mysql:'x1', ddos:'1 Tbps', price:'80k | —'},
-    {plan:'P3', slots:'350', ram:'1GB',   cpu:'40%',  storage:'—',    mysql:'x1', ddos:'1 Tbps', price:'150k | $2.5'},
-    {plan:'P4', slots:'500', ram:'3GB',   cpu:'50%',  storage:'—',    mysql:'x1', ddos:'1 Tbps', price:'200k | $3.5'},
-    {plan:'P5', slots:'750', ram:'4GB',   cpu:'70%',  storage:'4×SSD',mysql:'x1', ddos
+</body>
+</html>
