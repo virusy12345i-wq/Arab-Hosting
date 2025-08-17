@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arab Hosting</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1a0033, #330066, #4b0082, #6600cc, #9900ff);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 70px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #b366ff;
+      background: linear-gradient(90deg, #330066, #b366ff, #ffffff, #b366ff, #330066);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowPulse 3s infinite alternate, shine 12s linear infinite;
+      text-shadow: 
+        0 0 15px #b366ff,
+        0 0 30px #9933ff,
+        0 0 60px #6600cc;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 10px #b366ff, 0 0 20px #9933ff, 0 0 40px #6600cc; }
+      100% { text-shadow: 0 0 20px #d699ff, 0 0 40px #b366ff, 0 0 80px #9933ff; }
+    }
+
+    @keyframes shine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Arab Hosting</div>
+</body>
+</html>
